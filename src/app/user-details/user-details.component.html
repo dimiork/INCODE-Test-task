@@ -1,19 +1,20 @@
-<div class="shortDetails">
+<!-- <div class="shortDetails" *ngIf="hero"> -->
+<div class="shortDetails" *ngIf="userService.selectedUser">
   <div class="userLogo">
-  	<img src="" alt="Avatar" height="128" width="128"/>
+  	<img src="{{ userService.selectedUser.general.avatar }}" alt="avatar" height="128" width="128"/>
   </div>
   <div class="userInfo">
-    <div class="userFullName">FirstName LastName</div>
-    <div class="userJob">Job Title - Job Company</div>
+    <div class="userFullName">{{ userService.selectedUser.general.firstName + ' ' + userService.selectedUser.general.lastName }}</div>
+    <div class="userJob">{{ userService.selectedUser.job.title + ' ' + userService.selectedUser.job.company }}</div>
   </div>
+  <ul class="fullDetails">
+		Contacts:
+    E-Mail: <li>{{userService.selectedUser.contact.email}}</li>
+    Phone: <li>{{userService.selectedUser.contact.phone}}</li>
+		Address:
+    Street: <li>{{userService.selectedUser.address.street}}</li>
+    City: <li>{{userService.selectedUser.address.city}}</li>
+    Zip Code: <li>{{userService.selectedUser.address.zipCode}}</li>
+    Country: <li>{{userService.selectedUser.address.country}}</li>
+  </ul>
 </div>
-<ul class="fullDetails">
-			Contacts:
-      E-Mail: <li>email</li>
-      Phone: <li>phone</li>
-			Address:
-      Street: <li>street</li>
-      City: <li>city</li>
-      Zip Code: <li>zipCode</li>
-      Country: <li>country</li>
-</ul>
