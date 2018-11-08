@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './models/user';
 import { USERS } from './user-mock';
 
@@ -8,7 +9,9 @@ import { USERS } from './user-mock';
 })
 export class UserService {
 
-  constructor() { };
+  constructor(private http: HttpClient) { };
+
+  private usersUrl = '/api/users.json';  // URL to web api
 
   selectedUser: User;
 
@@ -17,6 +20,7 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-  	return of(USERS);
+  	// return of(USERS);
+  	return this.http.get<User[]>(this.usersUrl)
   }
 }
