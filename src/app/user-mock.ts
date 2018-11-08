@@ -1,6 +1,6 @@
-import { User } from './models/user.ts';
+import { User } from './models/user';
 
-export const Users: User[] = [
+export const USERS: User[] = [
   {
     "general": {
       "firstName": "Liana",

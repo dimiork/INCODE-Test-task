@@ -21,16 +21,9 @@ interface Address {
 	country: string;
 }
 
-interface User {
+export interface User {
    general: General;
    job: Job;
    contact: Contact;
    address: Address;
 }
-
-export class User implements User {
-	general: General;
-	job: Job;
-	contact: Contact;
-	address: Address;
-};
