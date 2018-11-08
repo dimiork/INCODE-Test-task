@@ -1,11 +1,13 @@
 <ul class="usersList">
-  <li class="user" *ngFor="let unit of users">
+  <li class="user" *ngFor="let user of users"
+  		(click) = "onSelect(user)" 
+  		[class.selected]="user === userService.selectedUser">
     <div class="userAvatar">
-    	<img src="" alt="Avatar" height="80" width="80"/>
+    	<img src="{{ user.general.avatar }}" alt="Avatar" height="80" width="80"/>
     </div>
     <div class="userInfo">
-      <div class="userFullName">{{ unit.general.firstName + ' ' + unit.general.lastName }}</div>
-      <div class="userJob">{{ unit.job.title }}</div>
+      <div class="userFullName">{{ user.general.firstName + ' ' + user.general.lastName }}</div>
+      <div class="userJob">{{ user.job.title }}</div>
     </div>
   </li>
 </ul>

@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.selected {
+  background: gray;
+}
+
 .userAvatar { 
   grid-area: userAvatar;
 }

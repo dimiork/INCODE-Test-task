@@ -10,6 +10,12 @@ export class UserService {
 
   constructor() { };
 
+  selectedUser: User;
+
+  selectUser(user: User) {
+  	this.selectedUser = user;
+  }
+
   getUsers(): Observable<User[]> {
   	return of(USERS);
   }

@@ -17,6 +17,10 @@ export class UserListComponent implements OnInit {
 
   users: User[];
 
+  onSelect(user: User): void {
+  	this.userService.selectUser(user);
+  }
+
   getUsers(): void {
   	this.userService.getUsers().subscribe(users => this.users = users);
   }
