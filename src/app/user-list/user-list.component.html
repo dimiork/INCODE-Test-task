@@ -1,11 +1,11 @@
 <ul class="usersList">
-  <li class="user">
+  <li class="user" *ngFor="let unit of users">
     <div class="userAvatar">
     	<img src="" alt="Avatar" height="80" width="80"/>
     </div>
     <div class="userInfo">
-      <div class="userFullName">firstName LastName</div>
-      <div class="userJob">Job Title</div>
+      <div class="userFullName">{{ unit.general.firstName + ' ' + unit.general.lastName }}</div>
+      <div class="userJob">{{ unit.job.title }}</div>
     </div>
   </li>
 </ul>
