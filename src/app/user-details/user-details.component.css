@@ -1,0 +1,13 @@
+.shortDetails {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "userLogo userInfo";
+  grid-area: shortDetails;
+}
+
+.fullDetails { 
+  grid-area: fullDetails; 
+  list-style-type: none;
+  padding: 0;
+}

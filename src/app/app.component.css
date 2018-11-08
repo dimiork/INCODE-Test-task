@@ -1,0 +1,26 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "sideBar userDetails";
+}
+
+.sideBar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "searchInput" "usersList";
+  grid-area: sideBar;
+}
+
+.userDetails {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: "shortDetails" "fullDetails";
+  grid-area: userDetails;
+}
+
+/*div {
+	border: 1px solid black;
+}*/

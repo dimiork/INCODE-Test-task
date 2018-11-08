@@ -1,0 +1,29 @@
+.usersList { 
+  grid-area: usersList; 
+  list-style-type: none;
+  padding: 20px 10px;
+  margin: 0;
+  height: calc(100vh - 50px);
+  overflow:hidden;
+  overflow-y:scroll;
+}
+
+.user {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "userAvatar userInfo";
+  cursor: pointer;
+}
+
+.userAvatar { 
+  grid-area: userAvatar;
+}
+
+.userInfo {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "userFullName" "userJob";
+  grid-area: userInfo;
+}
