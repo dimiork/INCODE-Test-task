@@ -17,6 +17,8 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService, private store: Store) { }
 
   @Select(UserState.users) users$: Observable<User[]>;
+  @Select(UserState.filteredUsers) filteredUsers$: Observable<User[]>;
+  @Select(UserState.loading) loading$: Observable<boolean>;
 
   ngOnInit() {
   	// this.getUsers();

@@ -1,39 +1,72 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { User } from '../models/user';
+import { UserService } from '../user.service';
 
-import { FetchUsers } from '../store/user.actions';
+import { FetchUsers, SearchUsers } from '../store/user.actions';
 
 export interface UserStateModel {
   users: User[];
+  filteredUsers: User[];
 }
 
 @State<UserStateModel>({
   name: 'users',
   defaults: {
-    users: []
+    users: [],
+    filteredUsers: []
   }
 })
 export class UserState {
 
-  constructor(private http: HttpClient) { }
+  constructor(private userService: UserService) { }
 
   @Selector()
   public static users(state: UserStateModel) {
     return state.users;
-  }  
+  }
+
+  @Selector()
+  public static filteredUsers(state: UserStateModel) {
+    return state.filteredUsers;
+  }
+
+  @Selector()
+  public static loading(state: UserStateModel) {
+    return state.loading;
+  }
 
   @Action(FetchUsers)
   getUsers({ getState, setState }: StateContext<UserStateModel>) {
     const state = getState();
     let users: User[] = [];
-    this.http.get<User[]>('/api/users.json').subscribe(user => {
+    this.userService.getUsers().subscribe(user => {
       users = user;
 
       setState({
         ...state,
         users: users,
+        filteredUsers: users,
       });
     });
   }
+
+  @Action(SearchUsers)
+    SearchUsers({ getState, setState }: StateContext<UserStateModel>, { payload }) {
+      const state = getState();
+      const keyword: string = payload.queryText;
+      let users: User[] = [];
+      console.log(payload);
+      if(!keyword) return state.users;
+      users = state.users.filter(user => {
+        return Object.values(user).some(a => {
+          return Object.values(a).some(b => b.toLowerCase().includes(keyword.toLowerCase()));
+        });
+      });
+
+      setState({
+        ...state,
+        filteredUsers: users,
+      });
+    }
 }
