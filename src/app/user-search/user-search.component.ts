@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { SearchUsers } from '../store/user.actions';
 
@@ -9,15 +9,17 @@ import { SearchUsers } from '../store/user.actions';
 })
 export class UserSearchComponent implements OnInit {
 
-	value: string;
+	private _value = '';
+
+	set value(value: string) {
+    this._value = (value && value.trim()) || '';
+    this.store.dispatch(new SearchUsers({queryText: this.value}));
+  }
+	 
+	get value(): string { return this._value; }
 
   constructor(private store: Store) { }
 
   ngOnInit() {}
-
-  onKey(event: KeyboardEvent) {
-    this.value = (<HTMLInputElement>event.target).value;
-    this.store.dispatch(new SearchUsers({queryText: this.value}));
-  }
 
 }

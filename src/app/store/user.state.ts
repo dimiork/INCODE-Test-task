@@ -31,11 +31,6 @@ export class UserState {
     return state.filteredUsers;
   }
 
-  @Selector()
-  public static loading(state: UserStateModel) {
-    return state.loading;
-  }
-
   @Action(FetchUsers)
   getUsers({ getState, setState }: StateContext<UserStateModel>) {
     const state = getState();
@@ -55,18 +50,25 @@ export class UserState {
     SearchUsers({ getState, setState }: StateContext<UserStateModel>, { payload }) {
       const state = getState();
       const keyword: string = payload.queryText;
+      console.log('Store Dispatch');
+      console.log(keyword);
       let users: User[] = [];
-      console.log(payload);
-      if(!keyword) return state.users;
-      users = state.users.filter(user => {
-        return Object.values(user).some(a => {
-          return Object.values(a).some(b => b.toLowerCase().includes(keyword.toLowerCase()));
-        });
-      });
+      if(!keyword) {
 
+        users = state.users;
+      } else {
+
+        users = state.users.filter(user => {
+          return Object.values(user).some(a => {
+            return Object.values(a).some(b => b.toLowerCase().includes(keyword.toLowerCase()));
+          });
+        });
+      }
+      
       setState({
         ...state,
         filteredUsers: users,
       });
+
     }
 }

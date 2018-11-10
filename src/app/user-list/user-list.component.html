@@ -1,13 +1,11 @@
-<ul class="usersList">
-  <li class="user" *ngFor="let user of filteredUsers$ | async"
-  		(click) = "onSelect(user)" 
-  		[class.selected]="user === userService.selectedUser">
-    <div class="userAvatar">
-    	<img src="{{ user.general.avatar }}" alt="Avatar" height="80" width="80"/>
-    </div>
-    <div class="userInfo">
-      <div class="userFullName">{{ user.general.firstName + ' ' + user.general.lastName }}</div>
-      <div class="userJob">{{ user.job.title }}</div>
-    </div>
-  </li>
-</ul>
+<mat-list>
+  <mat-list-item *ngFor="let user of filteredUsers$ | async"
+  								(click) = "onSelect(user)" 
+  								[class.selected]="user === userService.selectedUser">
+    <img matListAvatar src="{{user.general.avatar}}" alt="logo">
+    <h3 matLine> {{user.general.firstName + ' ' + user.general.lastName}} </h3>
+    <p matLine>
+      <span> {{user.job.title}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>

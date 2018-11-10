@@ -1,33 +1,16 @@
-.usersList { 
-  grid-area: usersList; 
-  list-style-type: none;
-  padding: 20px 10px;
-  margin: 0;
+:host{
+  width: 100%;
   height: calc(100vh - 50px);
-  overflow:hidden;
-  overflow-y:scroll;
+  display: flex;
+  flex-direction: column;
 }
 
-.user {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "userAvatar userInfo";
+mat-list {
+  flex-grow: 1;
   cursor: pointer;
+  overflow: auto;
 }
 
-.selected {
-  background: gray;
-}
-
-.userAvatar { 
-  grid-area: userAvatar;
-}
-
-.userInfo {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "userFullName" "userJob";
-  grid-area: userInfo;
+mat-list .selected {
+  background: #9fa8da;
 }

@@ -1,4 +1,4 @@
-.shortDetails {
+/*.shortDetails {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
@@ -10,4 +10,32 @@
   grid-area: fullDetails; 
   list-style-type: none;
   padding: 0;
+}
+*/
+
+.example-card {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+.example-header-image {
+  background-size: cover;
+  width: 128px;
+  height: 128px;
+}
+
+.example-card h4 span {
+	font-weight: 400;
+	font-size: larger;
+}
+
+.example-card mat-card-title {
+	font-size: xx-large;
+}
+
+.example-card mat-card-subtitle {
+	font-size: x-large;
 }
