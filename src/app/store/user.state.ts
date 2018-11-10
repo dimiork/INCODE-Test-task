@@ -50,8 +50,6 @@ export class UserState {
     SearchUsers({ getState, setState }: StateContext<UserStateModel>, { payload }) {
       const state = getState();
       const keyword: string = payload.queryText;
-      console.log('Store Dispatch');
-      console.log(keyword);
       let users: User[] = [];
       if(!keyword) {
 
@@ -59,10 +57,13 @@ export class UserState {
       } else {
 
         users = state.users.filter(user => {
-          return Object.values(user).some(a => {
-            return Object.values(a).some(b => b.toLowerCase().includes(keyword.toLowerCase()));
+          return Object.keys(user).some(i => {
+            return Object.keys(user[i]).some(j => {
+              return user[i][j].toLowerCase().includes(keyword.toLowerCase());
+            });
           });
         });
+
       }
       
       setState({
