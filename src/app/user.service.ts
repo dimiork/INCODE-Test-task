@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { };
 
-  private usersUrl = '/api/users.json';  // URL to web api
+  private usersUrl = '//api.jsonbin.io/b/5be42ea4e9336c4edc57f776';  // URL to web api
 
   selectedUser: User;
 
@@ -20,7 +20,6 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-  	// return of(USERS);
   	return this.http.get<User[]>(this.usersUrl)
   }
 }
