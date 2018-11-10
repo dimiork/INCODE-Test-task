@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
-import { UserService } from '../user.service';
+
+import { Store, Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { UserState } from '../store/user.state';
 
 @Component({
   selector: 'app-user-details',
@@ -9,10 +12,10 @@ import { UserService } from '../user.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor(public userService: UserService) {};
+  constructor() {};
+
+  @Select(UserState.selectedUser) selectedUser$: Observable<User>;
 
   ngOnInit() {};
-
-  
 
 }

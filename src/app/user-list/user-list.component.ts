@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { FetchUsers } from '../store/user.actions';
+import { FetchUsers, SelectUser } from '../store/user.actions';
 import { UserState } from '../store/user.state';
 
 import { User } from '../models/user';
@@ -14,7 +14,7 @@ import { UserService } from '../user.service';
 })
 export class UserListComponent implements OnInit {
 
-  constructor(private userService: UserService, private store: Store) { }
+  constructor(private store: Store) { }
 
   @Select(UserState.users) users$: Observable<User[]>;
   @Select(UserState.filteredUsers) filteredUsers$: Observable<User[]>;
@@ -24,6 +24,6 @@ export class UserListComponent implements OnInit {
   }
 
   onSelect(user: User): void {
-  	this.userService.selectUser(user);
+  	this.store.dispatch(new SelectUser(user));
   }
 }

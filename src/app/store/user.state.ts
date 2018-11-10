@@ -3,18 +3,20 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { User } from '../models/user';
 import { UserService } from '../user.service';
 
-import { FetchUsers, SearchUsers } from '../store/user.actions';
+import { FetchUsers, SearchUsers, SelectUser } from '../store/user.actions';
 
 export interface UserStateModel {
   users: User[];
   filteredUsers: User[];
+  selectedUser: User;
 }
 
 @State<UserStateModel>({
   name: 'users',
   defaults: {
     users: [],
-    filteredUsers: []
+    filteredUsers: [],
+    selectedUser: null
   }
 })
 export class UserState {
@@ -29,6 +31,20 @@ export class UserState {
   @Selector()
   public static filteredUsers(state: UserStateModel) {
     return state.filteredUsers;
+  }
+
+  @Selector()
+  public static selectedUser(state: UserStateModel) {
+    return state.selectedUser;
+  }
+
+  @Action(SelectUser)
+  selectUser({getState, setState}: StateContext<UserStateModel>, { user }) {
+    const state = getState();
+    setState({
+      ...state,
+      selectedUser: user
+    });
   }
 
   @Action(FetchUsers)
@@ -47,9 +63,8 @@ export class UserState {
   }
 
   @Action(SearchUsers)
-    SearchUsers({ getState, setState }: StateContext<UserStateModel>, { payload }) {
+    SearchUsers({ getState, setState }: StateContext<UserStateModel>, { keyword }) {
       const state = getState();
-      const keyword: string = payload.queryText;
       let users: User[] = [];
       if(!keyword) {
 

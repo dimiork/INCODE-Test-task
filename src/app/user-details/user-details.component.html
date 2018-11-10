@@ -1,10 +1,11 @@
-<mat-card class="example-card" *ngIf="userService.selectedUser">
+<!-- <mat-card class="example-card" *ngIf="userService.selectedUser"> -->
+	<mat-card class="example-card" *ngIf="(selectedUser$ | async) as user">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image" 
-    		[ngStyle] = "{'background-image': 'url(' + userService.selectedUser.general.avatar + ')'}">
+    		[ngStyle] = "{'background-image': 'url(' + user.general.avatar + ')'}">
     </div>
-    <mat-card-title>{{userService.selectedUser.general.firstName + ' ' + userService.selectedUser.general.lastName}}</mat-card-title>
-    <mat-card-subtitle>{{userService.selectedUser.job.title + ' - ' + userService.selectedUser.job.company}}</mat-card-subtitle>
+    <mat-card-title>{{user.general.firstName + ' ' + user.general.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{user.job.title + ' - ' + user.job.company}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <mat-list>
@@ -12,25 +13,25 @@
       <h3 mat-subheader>Contact</h3>
       <mat-list-item>
         <mat-icon mat-list-icon>email</mat-icon>
-        <h4 mat-line><a href="mailto:{{userService.selectedUser.contact.email}}">{{userService.selectedUser.contact.email}}</a></h4>
+        <h4 mat-line><a href="mailto:{{user.contact.email}}">{{user.contact.email}}</a></h4>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon>phone</mat-icon>
-        <h4 mat-line><a href="tel:{{userService.selectedUser.contact.phone}}">{{userService.selectedUser.contact.phone}}</a></h4>
+        <h4 mat-line><a href="tel:{{user.contact.phone}}">{{user.contact.phone}}</a></h4>
       </mat-list-item>
       <mat-divider></mat-divider>
       <h3 mat-subheader>Address</h3>
       <mat-list-item>
-        <h4 mat-line><span>Street: </span>{{userService.selectedUser.address.street}}</h4>
+        <h4 mat-line><span>Street: </span>{{user.address.street}}</h4>
       </mat-list-item>
       <mat-list-item>
-        <h4 mat-line><span>City: </span>{{userService.selectedUser.address.city}}</h4>
+        <h4 mat-line><span>City: </span>{{user.address.city}}</h4>
       </mat-list-item>
       <mat-list-item>
-        <h4 mat-line><span>Country: </span>{{userService.selectedUser.address.country}}</h4>
+        <h4 mat-line><span>Country: </span>{{user.address.country}}</h4>
       </mat-list-item>
       <mat-list-item>
-        <h4 mat-line><span>Zip Code: </span>{{userService.selectedUser.address.zipCode}}</h4>
+        <h4 mat-line><span>Zip Code: </span>{{user.address.zipCode}}</h4>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

@@ -13,12 +13,6 @@ export class UserService {
 
   private usersUrl = '//api.jsonbin.io/b/5be42ea4e9336c4edc57f776';  // URL to web api
 
-  selectedUser: User;
-
-  selectUser(user: User) {
-  	this.selectedUser = user;
-  }
-
   getUsers(): Observable<User[]> {
   	return this.http.get<User[]>(this.usersUrl)
   }

@@ -11,14 +11,14 @@ export class UserSearchComponent implements OnInit {
 
 	private _value = '';
 
+	constructor(private store: Store) { }
+
 	set value(value: string) {
     this._value = (value && value.trim()) || '';
-    this.store.dispatch(new SearchUsers({queryText: this.value}));
+    this.store.dispatch(new SearchUsers(this.value));
   }
 	 
 	get value(): string { return this._value; }
-
-  constructor(private store: Store) { }
 
   ngOnInit() {}
 
