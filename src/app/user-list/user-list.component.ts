@@ -25,6 +25,7 @@ export class UserListComponent implements OnInit {
   }
 
   onSelect(user: User): void {
-  	this.store.dispatch(new SelectUser(user));
+    const action = new SelectUser(user);
+  	this.store.dispatch(action);
   }
 }

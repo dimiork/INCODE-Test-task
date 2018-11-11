@@ -1,12 +1,33 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserSearchComponent } from './user-search/user-search.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserState } from './store/user.state';
+import { NgxsModule } from '@ngxs/store';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './material.module';
+import { HttpClientModule }    from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        UserSearchComponent,
+        UserDetailsComponent,
+        UserListComponent
       ],
+      imports: [
+        BrowserAnimationsModule,
+        MaterialModule,
+        FormsModule,
+        NgxsModule.forRoot([ UserState ]),
+        HttpClientModule,
+      ],
+      // schemas: [ NO_ERRORS_SCHEMA ]
     }).compileComponents();
   }));
 
@@ -22,10 +43,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('usersFinder');
   });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to usersFinder!');
-  });
 });

@@ -15,7 +15,8 @@ export class UserSearchComponent implements OnInit {
 
 	set value(value: string) {
     this._value = (value && value.trim()) || '';
-    this.store.dispatch(new SearchUsers(this.value));
+    const action = new SearchUsers(this.value);
+    this.store.dispatch(action);
   }
 	 
 	get value(): string { return this._value; }
@@ -23,3 +24,5 @@ export class UserSearchComponent implements OnInit {
   ngOnInit() {}
 
 }
+
+
