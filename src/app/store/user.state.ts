@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { User } from '../models/user';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 
 import { FetchUsers, SearchUsers, SelectUser } from '../store/user.actions';
 

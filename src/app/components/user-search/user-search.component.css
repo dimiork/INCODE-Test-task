@@ -1,0 +1,5 @@
+.search-form {
+  width: 100%;
+}
+
+.search-input { grid-area: searchInput; }

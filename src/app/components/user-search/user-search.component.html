@@ -1,5 +1,5 @@
-<div class="searchInput">
-  <mat-form-field [formGroup]="searchForm" class="example-form-field">
+<div class="search-input">
+  <mat-form-field [formGroup]="searchForm" class="search-form">
 	  <input matInput type="text" placeholder="Search" formControlName="search">
 	  <button mat-button *ngIf="searchField$" matSuffix mat-icon-button aria-label="Clear" (click)="searchField$.reset()">
 	    <mat-icon>close</mat-icon>

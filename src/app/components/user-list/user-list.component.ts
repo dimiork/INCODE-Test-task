@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { FetchUsers, SelectUser } from '../store/user.actions';
-import { UserState } from '../store/user.state';
+import { FetchUsers, SelectUser } from '../../store/user.actions';
+import { UserState } from '../../store/user.state';
 
-import { User } from '../models/user';
-import { UserService } from '../user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-list',

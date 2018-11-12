@@ -2,23 +2,23 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "sideBar userDetails";
+  grid-template-areas: "side-bar user-details";
 }
 
-.sideBar {
+.side-bar {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 1fr;
-  grid-template-areas: "searchInput" "usersList";
-  grid-area: sideBar;
+  grid-template-areas: "search-input" "users-list";
+  grid-area: side-bar;
 }
 
-.userDetails {
+.user-details {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr;
-  grid-template-areas: "shortDetails" "fullDetails";
-  grid-area: userDetails;
+  grid-template-areas: "short-details" "full-details";
+  grid-area: user-details;
   max-height: 100vh;
 }
 

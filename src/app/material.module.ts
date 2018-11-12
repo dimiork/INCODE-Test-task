@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule,
+import {
+  MatButtonModule,
   MatCheckboxModule,
   MatSidenavModule,
   MatGridListModule,
@@ -7,7 +8,8 @@ import { MatButtonModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatCardModule } from '@angular/material';
+  MatCardModule
+} from '@angular/material';
 
 @NgModule({
   imports: [

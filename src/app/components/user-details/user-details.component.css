@@ -1,0 +1,26 @@
+.users-card {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+.user-header-image {
+  background-size: cover;
+  width: 128px;
+  height: 128px;
+}
+
+.users-card h4 span {
+	font-weight: 400;
+	font-size: larger;
+}
+
+.users-card mat-card-title {
+	font-size: xx-large;
+}
+
+.users-card mat-card-subtitle {
+	font-size: x-large;
+}

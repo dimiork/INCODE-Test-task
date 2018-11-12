@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
+import { User } from '../../models/user';
 
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { UserState } from '../store/user.state';
+import { UserState } from '../../store/user.state';
 
 @Component({
   selector: 'app-user-details',

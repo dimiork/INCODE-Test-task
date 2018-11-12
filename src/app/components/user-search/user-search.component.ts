@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 import { Store, Select } from '@ngxs/store';
-import { SearchUsers } from '../store/user.actions';
+import { SearchUsers } from '../../store/user.actions';
 
 @Component({
   selector: 'app-user-search',
