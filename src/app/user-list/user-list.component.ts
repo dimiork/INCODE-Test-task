@@ -22,11 +22,11 @@ export class UserListComponent implements OnInit {
   @Select(UserState.selectedUser) selectedUser$: Observable<User>;
 
   ngOnInit() {
-  	this.store.dispatch(new FetchUsers());
+    this.store.dispatch(new FetchUsers());
   }
 
   onSelect(user: User): void {
     const action = new SelectUser(user);
-  	this.store.dispatch(action);
+    this.store.dispatch(action);
   }
 }

@@ -14,8 +14,7 @@ import { SearchUsers } from '../store/user.actions';
 export class UserSearchComponent implements OnInit {
   searchField$: FormControl;
   searchForm: FormGroup;
-  
-  constructor(private store: Store, private fb:FormBuilder) { 
+  constructor (private store: Store, private fb: FormBuilder) {
     this.searchField$ = new FormControl();
     this.searchForm = fb.group({search: this.searchField$});
 

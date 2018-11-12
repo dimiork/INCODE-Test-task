@@ -9,11 +9,12 @@ import { USERS } from './user-mock';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { };
+  constructor(private http: HttpClient) { }
 
+  // private usersUrl = '/api/users.json';  // URL to web api
   private usersUrl = '//api.jsonbin.io/b/5be42ea4e9336c4edc57f776';  // URL to web api
 
   getUsers(): Observable<User[]> {
-  	return this.http.get<User[]>(this.usersUrl)
+    return this.http.get<User[]>(this.usersUrl);
   }
 }

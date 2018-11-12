@@ -12,10 +12,10 @@ import { UserState } from '../store/user.state';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor() {};
+  constructor() {}
 
   @Select(UserState.selectedUser) selectedUser$: Observable<User>;
 
-  ngOnInit() {};
+  ngOnInit() {}
 
 }

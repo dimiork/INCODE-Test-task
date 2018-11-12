@@ -5,25 +5,35 @@ interface General {
 }
 
 interface Job {
-   company: string;
-   title: string;
+  company: string;
+  title: string;
 }
 
 interface Contact {
-	email: string;
-	phone: string;
+  email: string;
+  phone: string;
 }
 
 interface Address {
-	street: string;
-	city: string;
-	zipCode: string;
-	country: string;
+  street: string;
+  city: string;
+  zipCode: string;
+  country: string;
 }
 
 export interface User {
-   general: General;
-   job: Job;
-   contact: Contact;
-   address: Address;
+  general: General;
+  job: Job;
+  contact: Contact;
+  address: Address;
+}
+
+import { USERS } from '../user-mock';
+
+export function generateMockUser(): User {
+  return USERS[0];
+}
+
+export function generateMockUsers(): User[] {
+  return USERS;
 }

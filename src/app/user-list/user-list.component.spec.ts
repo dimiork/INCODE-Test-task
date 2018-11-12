@@ -5,8 +5,8 @@ import { MaterialModule } from '../material.module';
 import { UserState } from '../store/user.state';
 import { FetchUsers } from '../store/user.actions';
 import { NgxsModule } from '@ngxs/store';
-import { Store, Select } from '@ngxs/store';
-import { HttpClientModule }    from '@angular/common/http';
+import { Store } from '@ngxs/store';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -16,7 +16,7 @@ describe('UserListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UserListComponent ],
-      imports: [ 
+      imports: [
         MaterialModule,
         NgxsModule.forRoot([ UserState ]),
         HttpClientModule,
@@ -36,13 +36,9 @@ describe('UserListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('it load users from backend', async(() => {
-    store.dispatch(new FetchUsers());
-    store.selectOnce(state => {
-      return state.users.users;
-    }).subscribe(user => {
-      expect(user).toBe(true);
-    });
+  it('should run #ngOnInit()', async(() => {
+    const result = component.ngOnInit();
+    expect(result !== null).toBeTruthy();
   }));
 
 });

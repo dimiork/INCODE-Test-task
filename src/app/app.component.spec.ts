@@ -7,9 +7,9 @@ import { UserSearchComponent } from './user-search/user-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserState } from './store/user.state';
 import { NgxsModule } from '@ngxs/store';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -24,6 +24,7 @@ describe('AppComponent', () => {
         BrowserAnimationsModule,
         MaterialModule,
         FormsModule,
+        ReactiveFormsModule,
         NgxsModule.forRoot([ UserState ]),
         HttpClientModule,
       ],
