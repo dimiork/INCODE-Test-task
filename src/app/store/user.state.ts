@@ -12,15 +12,18 @@ export interface UserStateModel {
   loading: boolean;
 }
 
-@State<UserStateModel>({
-  name: 'users',
-  defaults: {
+export const userStateDefaults: UserStateModel = {
     users: [],
     filteredUsers: [],
     selectedUser: null,
     loading: true
-  }
+  };
+
+@State<UserStateModel>({
+  name: 'users',
+  defaults: userStateDefaults
 })
+
 export class UserState {
 
   constructor(private userService: UserService) { }
@@ -55,7 +58,7 @@ export class UserState {
   }
 
   @Action(FetchUsers)
-  getUsers({ getState, setState }: StateContext<UserStateModel>) {
+  fetchUsers({ getState, setState }: StateContext<UserStateModel>) {
     const state = getState();
     let users: User[] = [];
     this.userService.getUsers().subscribe(user => {
@@ -71,28 +74,26 @@ export class UserState {
   }
 
   @Action(SearchUsers)
-    SearchUsers({ getState, setState }: StateContext<UserStateModel>, { keyword }) {
-      const state = getState();
-      let users: User[] = [];
-      if(!keyword) {
+  SearchUsers({ getState, setState }: StateContext<UserStateModel>, { keyword }) {
+    const state = getState();
+    let users: User[] = [];
+    if (!keyword) {
 
-        users = state.users;
-      } else {
+      users = state.users;
+    } else {
 
-        users = state.users.filter(user => {
-          return Object.keys(user).some(i => {
-            return Object.keys(user[i]).some(j => {
-              return user[i][j].toLowerCase().includes(keyword.toLowerCase());
-            });
+      users = state.users.filter(user => {
+        return Object.keys(user).some(i => {
+          return Object.keys(user[i]).some(j => {
+            return user[i][j].toLowerCase().includes(keyword.toLowerCase());
           });
         });
-
-      }
-      
-      setState({
-        ...state,
-        filteredUsers: users,
       });
-
     }
+    setState({
+      ...state,
+      filteredUsers: users,
+    });
+
+  }
 }
