@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+
 import { Store, Select } from '@ngxs/store';
 import { SearchUsers } from '../store/user.actions';
 
@@ -8,18 +12,21 @@ import { SearchUsers } from '../store/user.actions';
   styleUrls: ['./user-search.component.css']
 })
 export class UserSearchComponent implements OnInit {
+  searchField: FormControl;
+  searchForm: FormGroup;
+  
+  constructor(private store: Store, private fb:FormBuilder) { 
+    this.searchField = new FormControl();
+    this.searchForm = fb.group({search: this.searchField});
 
-	private _value = '';
-
-	constructor(private store: Store) { }
-
-	set value(value: string) {
-    this._value = (value && value.trim()) || '';
-    const action = new SearchUsers(this.value);
-    this.store.dispatch(action);
+    this.searchField
+        .valueChanges
+        .pipe(
+          debounceTime(400),
+          distinctUntilChanged(),
+          switchMap(term => this.store.dispatch(new SearchUsers(term))),
+        ).subscribe(res => console.log(res));
   }
-	 
-	get value(): string { return this._value; }
 
   ngOnInit() {}
 
