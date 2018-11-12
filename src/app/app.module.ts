@@ -1,3 +1,4 @@
+import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +28,10 @@ import { MaterialModule } from './material.module';
     BrowserModule,
     HttpClientModule,
     NgxsModule.forRoot([ UserState ]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production, // Set to true for prod mode
+      maxAge: 10
+    }),
     NgxsLoggerPluginModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,

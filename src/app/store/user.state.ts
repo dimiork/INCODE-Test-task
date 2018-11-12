@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { User } from '../models/user';
 import { UserService } from '../user.service';
@@ -60,17 +61,15 @@ export class UserState {
   @Action(FetchUsers)
   fetchUsers({ getState, setState }: StateContext<UserStateModel>) {
     const state = getState();
-    let users: User[] = [];
-    this.userService.getUsers().subscribe(user => {
-      users = user;
-
+    const users: User[] = [];
+    return this.userService.getUsers().pipe(map(x => {
       setState({
         ...state,
-        users: users,
-        filteredUsers: users,
+        users: x,
+        filteredUsers: x,
         loading: false
       });
-    });
+    }));
   }
 
   @Action(SearchUsers)
@@ -78,10 +77,8 @@ export class UserState {
     const state = getState();
     let users: User[] = [];
     if (!keyword) {
-
       users = state.users;
     } else {
-
       users = state.users.filter(user => {
         return Object.keys(user).some(i => {
           return Object.keys(user[i]).some(j => {
@@ -94,6 +91,5 @@ export class UserState {
       ...state,
       filteredUsers: users,
     });
-
   }
 }

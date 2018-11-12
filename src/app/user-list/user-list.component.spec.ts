@@ -40,26 +40,4 @@ describe('UserListComponent', () => {
     const result = component.ngOnInit();
     expect(result !== null).toBeTruthy();
   }));
-
 });
-
-
-// import { async, TestBed } from '@angular/core/testing';
-
-// describe('Zoo', () => {
-//   let store: Store;
-
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       imports: [NgxsModule.forRoot([ZooState])],
-//     }).compileComponents();
-//     store = TestBed.get(Store);
-//   }));
-
-//   it('it load users from backend', async(() => {
-//     store.dispatch(new FetchAnimals());
-//     store.selectOnce(state => state.users.users).subscribe(user => {
-//       expect(user).toBe(true);
-//     });
-//   }));
-// });

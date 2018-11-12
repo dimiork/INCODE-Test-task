@@ -6,6 +6,7 @@
     "start": "ng serve",
     "start-proxy": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
+    "buildGHPages": "ng build --target=production --output-path docs --base-href INCODE-Test-task",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
