@@ -9,6 +9,7 @@ export interface UserStateModel {
   users: User[];
   filteredUsers: User[];
   selectedUser: User;
+  loading: boolean;
 }
 
 @State<UserStateModel>({
@@ -16,12 +17,18 @@ export interface UserStateModel {
   defaults: {
     users: [],
     filteredUsers: [],
-    selectedUser: null
+    selectedUser: null,
+    loading: true
   }
 })
 export class UserState {
 
   constructor(private userService: UserService) { }
+
+  @Selector()
+  public static loading(state: UserStateModel) {
+    return state.loading;
+  }
 
   @Selector()
   public static users(state: UserStateModel) {
@@ -58,6 +65,7 @@ export class UserState {
         ...state,
         users: users,
         filteredUsers: users,
+        loading: false
       });
     });
   }
