@@ -3,7 +3,7 @@ import { async, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgxsModule, Store } from '@ngxs/store';
-import { FetchUsers, SelectUser } from './user.actions';
+import { FetchUsers, SelectUser, SearchUsers } from './user.actions';
 import { UserState, userStateDefaults } from './user.state';
 import { User, generateMockUser } from '../models/user';
 
@@ -36,6 +36,17 @@ describe('Users State', () => {
       state => state.users.selectedUser
     );
     expect(actualSelectedUser).toEqual(mockUser);
+  }));
+
+  it('[action] it should find a user by keyword', async(() => {
+    store.dispatch(new FetchUsers()).subscribe(state => {
+      const keyword: string = 'liana';
+      store.dispatch(new SearchUsers(keyword));
+      const [actualSearchedUser] = store.selectSnapshot(
+        state => state.users.filteredUsers
+      );
+      expect(actualSearchedUser).toEqual(mockUser);
+    });
   }));
 
 });
