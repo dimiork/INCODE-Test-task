@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
-import { MaterialModule } from '../material.module';
-import { UserState } from '../store/user.state';
-import { FetchUsers } from '../store/user.actions';
+import { MaterialModule } from '../../material.module';
+import { UserState } from '../../store/user.state';
+import { FetchUsers } from '../../store/user.actions';
 import { NgxsModule } from '@ngxs/store';
 import { Store } from '@ngxs/store';
 import { HttpClientModule } from '@angular/common/http';

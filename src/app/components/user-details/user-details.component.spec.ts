@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserDetailsComponent } from './user-details.component';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../../material.module';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;

@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserSearchComponent } from './user-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '../material.module';
-import { UserState } from '../store/user.state';
+import { MaterialModule } from '../../material.module';
+import { UserState } from '../../store/user.state';
 import { NgxsModule } from '@ngxs/store';
 import { HttpClientModule } from '@angular/common/http';
 
