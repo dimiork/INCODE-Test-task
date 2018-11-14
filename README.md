@@ -1,4 +1,4 @@
-# UsersFinder
+# UsersFinder [![Build Status](https://travis-ci.org/dimiork/INCODE-Test-task.svg?branch=CI)](https://travis-ci.org/dimiork/INCODE-Test-task)
 
 [Demo](https://dimiork.github.io/INCODE-Test-task/)
 
